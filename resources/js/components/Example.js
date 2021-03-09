@@ -1,24 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React , { useState} from 'react';
 
-function Example() {
+import { Button , Alert ,  } from 'react-bootstrap'
+
+
+
+const Example = () => {
+    const [show, setShow] = useState(true);
+  
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
-
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <>
+        <Alert show={show} variant="success">
+          <Alert.Heading>How's it going?!</Alert.Heading>
+          <p>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+            lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+            fermentum.
+          </p>
+          <hr />
+          <div className="d-flex justify-content-end">
+            <Button onClick={() => setShow(false)} variant="outline-success">
+              Close me y'all!
+            </Button>
+          </div>
+        </Alert>
+  
+        {!show && <Button onClick={() => setShow(true)}>Show Alert</Button>}
+      </>
     );
-}
+  }
+;
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}
+
