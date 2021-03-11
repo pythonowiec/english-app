@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/homepage', function(){
     return view('homepage');
-});
+})->middleware();
 
 Route::get('/posts/{post}', function($post){
     $posts =[
@@ -34,6 +34,8 @@ Route::get('/posts/{post}', function($post){
         'post' => $posts[$post]
     ]);
 });
+
+Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();
 
