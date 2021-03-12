@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Htpp\Controllers\PostsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,19 +23,7 @@ Route::get('/homepage', function(){
     return view('homepage');
 })->middleware();
 
-Route::get('/posts/{post}', function($post){
-    $posts =[
-        'first-post' => 'Hello, this is my first post',
-        'second-post' => 'Hello, this is my second post'
-    ];
-
-    if(!array_key_exists($post, $posts)){
-        abort(404);
-    }
-    return view('post', [
-        'post' => $posts[$post]
-    ]);
-});
+Route::Get('/posts/{post}', [PostsController::class, 'index']);
 
 Route::get('/users', 'HomeController@hello')->middleware();
 
