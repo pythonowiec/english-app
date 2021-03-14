@@ -9,5 +9,10 @@
 <body>
     <h1>Hello</h1>
     <h3>{{ $post }}</h3>
+
+    <h3>Other posts</h3>
+    @foreach ($all as $item)
+        {{ $item }}
+    @endforeach
 </body>
 </html>

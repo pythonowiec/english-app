@@ -18,12 +18,15 @@ class PostsController extends Controller
             'first-post' => 'Hello, this is my first post',
             'second-post' => 'Hello, this is my second post'
         ];
+
+        $allPosts = Posts::all();
     
         if(!array_key_exists($post, $posts)){
             abort(404);
         }
         return view('post', [
-            'post' => $posts[$post]
+            'post' => $posts[$post],
+            'all' => $allPosts
         ]);
     }
 
