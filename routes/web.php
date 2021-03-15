@@ -25,6 +25,11 @@ Route::get('/homepage', function(){
 
 Route::Get('/posts/{post}', [PostsController::class, 'index']);
 
+Route::Get('posts', function () {
+    return view("create");
+});
+Route::post('/store', [PostsController::class, 'store']);
+
 Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -48,7 +49,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('posts')->insert([
+                "title" => $request->title,
+                "content" => $request->content
+        ]);
+        return redirect("posts/first-post");
     }
 
     /**
