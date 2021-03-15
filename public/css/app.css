@@ -79,10 +79,6 @@ body {
   outline: 0 !important;
 }
 
-.text{
-  color: red;
-}
-
 hr {
   box-sizing: content-box;
   height: 0;

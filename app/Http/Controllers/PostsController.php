@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -13,23 +14,31 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($post)
-    {
-        $posts =[
-            'first-post' => 'Hello, this is my first post',
-            'second-post' => 'Hello, this is my second post'
-        ];
 
-        $allPosts = Posts::all();
-    
-        if(!array_key_exists($post, $posts)){
-            abort(404);
-        }
-        return view('post', [
-            'post' => $posts[$post],
-            'all' => $allPosts
-        ]);
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
+
+    public function index($post)
+    {   
+            if ($post == 'all'){
+                $test = Posts::where('author', 'test')->get();
+                return view('all-posts', [
+                    'all' => Posts::where('author', 'test')->get()
+                ]);
+            }
+            if ($post == 'add'){
+                return view("create");
+    
+            }else{
+                return view('post', [
+                    'post' => Posts::where('title', $post)->firstOrFail()
+                ]);
+            }
+
+        
+    }  
 
     /**
      * Show the form for creating a new resource.
@@ -49,9 +58,10 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('posts')->insert([
+        Posts::create([
                 "title" => $request->title,
-                "content" => $request->content
+                "content" => $request->content,
+                "author" => Auth::user()->name 
         ]);
         return redirect("posts/first-post");
     }

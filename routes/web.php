@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostsController;
 
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,15 +24,12 @@ Route::get('/homepage', function(){
     return view('homepage');
 })->middleware();
 
-Route::Get('/posts/{post}', [PostsController::class, 'index']);
+Route::get('/posts/{post}', [PostsController::class, 'index'])->middleware();
 
-Route::Get('posts', function () {
-    return view("create");
-});
 Route::post('/store', [PostsController::class, 'store']);
 
 Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}',[HomeController::class, 'index'])->name('home');

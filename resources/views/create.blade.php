@@ -13,6 +13,7 @@
                 <label for="formGroupExampleInput2">Content</label>
                 <input type="text" name="content" class="form-control" id="formGroupExampleInput2" placeholder="content">
             </div>
+            
             <button class="btn btn-success">Add</button>
         </form> 
     </div>
