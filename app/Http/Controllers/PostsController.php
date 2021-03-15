@@ -58,10 +58,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        Posts::create([
-                "title" => $request->title,
-                "content" => $request->content,
-                "author" => Auth::user()->name 
+        $validated = $request->validate([
+            'title' => 'required|unique:posts',
+            'content' => 'required',
+        ]);
+        Posts::insert([
+                'title' => $request->title,
+                'content' => $request->content,
+                'author' => Auth::user()->name 
         ]);
         return redirect("posts/first-post");
     }

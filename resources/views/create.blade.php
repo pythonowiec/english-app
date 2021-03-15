@@ -11,8 +11,19 @@
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Content</label>
-                <input type="text" name="content" class="form-control" id="formGroupExampleInput2" placeholder="content">
+                <input type="text" name="content" class="form-control" id="formGroupExampleInput2" placeholder="content">               
             </div>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
             
             <button class="btn btn-success">Add</button>
         </form> 
