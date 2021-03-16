@@ -1,4 +1,3 @@
 <div>
-    <button class="btn btn-danger" wire:click="show('test')">Delete</button>
-                    {{$show}}
+    <button class="btn btn-danger" wire:click="delete()">Delete</button>
 </div>

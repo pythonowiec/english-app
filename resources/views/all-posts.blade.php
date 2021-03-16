@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$item->title}}</h5>
                             <p class="card-text">{{$item->content}}</p>
-                            @livewire('counter')
+                            @livewire('counter', ['post_id' => $item->id])
                     </div>
                 </div>
                 @endforeach

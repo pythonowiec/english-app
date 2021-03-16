@@ -7,14 +7,14 @@ use App\Posts;
 
 class Counter extends Component
 {
-    public $show = "Please click";
-    public $test;
+    public $post_id;
     public function render()
     {
         return view('livewire.counter');
     }
 
-    public function show($id) {
-        $this->show = $id;
+    public function delete() {
+        Posts::where('id', $this->post_id)->delete();
+        redirect('/posts/all');
     }
 }
