@@ -11,7 +11,7 @@ class Counter extends Component
     public $test;
     public function render()
     {
-        return view('all-posts');
+        return view('livewire.counter');
     }
 
     public function show($id) {
