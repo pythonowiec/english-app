@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 
 use App\Http\Controllers\HomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +34,8 @@ Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();
 
-Route::get('/home/{id}',[HomeController::class, 'index'])->name('home');
+Route::get('/home',[HomeController::class, 'index'])->name('home');
+
+Route::get('/delete', function () {
+    return view('delete');
+});
