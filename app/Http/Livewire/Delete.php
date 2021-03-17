@@ -5,12 +5,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Posts;
 
-class Counter extends Component
+class Delete extends Component
 {
     public $post_id;
+
     public function render()
     {
-        return view('livewire.counter');
+        return view('livewire.delete');
     }
 
     public function delete() {

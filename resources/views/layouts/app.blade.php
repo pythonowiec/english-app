@@ -56,7 +56,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('posts/all') }}">Your posts</a>
-                                    <a class="dropdown-item" href="{{ url('posts/add') }}">Add Your posts</a>
+                                    <a class="dropdown-item" href="{{ url('posts/add') }}">Add new post</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
