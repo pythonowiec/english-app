@@ -26,11 +26,11 @@ Route::get('/homepage', function(){
     return view('homepage');
 })->middleware();
 
-Route::get('/posts/{post}', [PostsController::class, 'index'])->middleware();
+// Route::get('/posts/{post}', [PostsController::class, 'index'])->middleware();
 
-Route::post('/store', [PostsController::class, 'store']);
+// Route::post('/store', [PostsController::class, 'store']);
 
-Route::get('/users', 'HomeController@hello')->middleware();
+// Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();
 

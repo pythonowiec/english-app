@@ -15,30 +15,35 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
-    public function index($post)
-    {   
-            if ($post == 'all'){
-                $test = Posts::where('author', 'test')->get();
-                return view('all-posts', [
-                    'all' => Posts::where('author', 'test')->get()
-                ]);
-            }
-            if ($post == 'add'){
-                return view("create");
+    // public function index($post)
+    // {   
+    //         if ($post == 'all'){
+    //             $test = Posts::where('author', 'test')->get();
+    //             return view('all-posts', [
+    //                 'all' => Posts::where('author', 'test')->get()
+    //             ]);
+    //         }
+    //         if ($post == 'add'){
+    //             return view("create");
     
-            }else{
-                return view('post', [
-                    'post' => Posts::where('title', $post)->firstOrFail()
-                ]);
-            }
+    //         }else{
+    //             return view('post', [
+    //                 'post' => Posts::where('title', $post)->firstOrFail()
+    //             ]);
+    //         }
 
         
-    }  
+    // }  
+    public function index()
+    {
+        $test = Posts::where('author', 'test')->get();
+        return $test;
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +70,7 @@ class PostsController extends Controller
         Posts::insert([
                 'title' => $request->title,
                 'content' => $request->content,
-                'author' => Auth::user()->name 
+                'author' => $request->author
         ]);
         return redirect("posts/first-post");
     }
