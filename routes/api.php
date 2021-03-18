@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("posts", PostsController::class);
+Route::apiResource("posts", PostsController::class)->middleware('auth.apikey'); 
+Route::apiResource("cars", CarsController::class);

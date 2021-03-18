@@ -67,12 +67,34 @@ class PostsController extends Controller
             'title' => 'required|unique:posts',
             'content' => 'required',
         ]);
-        Posts::insert([
+        $row = Posts::insert([
                 'title' => $request->title,
                 'content' => $request->content,
                 'author' => $request->author
         ]);
-        return redirect("posts/first-post");
+
+        
+        return response()->json([
+            "success" => "true",
+            "code" => "200"
+        ]);
+    }
+
+    public function show_all($post){
+        if ($post == 'all'){
+            $test = Posts::where('author', 'test')->get();
+            return view('all-posts', [
+                'all' => Posts::where('author', 'test')->get()
+            ]);
+        }
+        if ($post == 'add'){
+            return view("create");
+
+        }else{
+            return view('post', [
+                'post' => Posts::where('title', $post)->firstOrFail()
+            ]);
+        }
     }
 
     /**
@@ -81,9 +103,16 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function show(Posts $posts)
+    public function show($id)
     {
-        //
+        $row = Posts::find($id);
+        $data = [
+            'data' => $row,
+            'success' => "true",
+            'code' => "200"          
+        ];
+        return response()->json($data);
+
     }
 
     /**
@@ -115,8 +144,12 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
-    {
-        //
+    public function destroy($id)
+    {   
+        Posts::where('id', $id)->delete();
+        return response()->json([
+            "success" => "true",
+            "code" => "200"
+        ]);
     }
 }

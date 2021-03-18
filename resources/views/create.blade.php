@@ -13,6 +13,10 @@
                 <label for="formGroupExampleInput2">Content</label>
                 <input type="text" name="content" class="form-control" id="formGroupExampleInput2" placeholder="content">               
             </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Author</label>
+                <input type="text" name="author" value="{{ Auth::user()->name ?? ""}}" class="form-control" id="formGroupExampleInput2" placeholder="content" disabled>     
+            </div>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
