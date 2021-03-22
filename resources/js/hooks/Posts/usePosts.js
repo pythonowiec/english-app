@@ -85,7 +85,7 @@ const usePosts = () => {
 
         posts.data.forEach(
             post =>
-                post.title.toString() === e.target.value.toString() &&
+                post.title.toString().startsWith(e.target.value.toString()) &&
                 searchedPosts.push(post)
         );
 

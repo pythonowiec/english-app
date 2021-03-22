@@ -84244,7 +84244,7 @@ var usePosts = function usePosts() {
     setSearchInput(e.target.value);
     var searchedPosts = [];
     posts.data.forEach(function (post) {
-      return post.title.toString() === e.target.value.toString() && searchedPosts.push(post);
+      return post.title.toString().startsWith(e.target.value.toString()) && searchedPosts.push(post);
     });
     setPosts(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
