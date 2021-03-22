@@ -1,36 +1,31 @@
-import React from 'react'
+import React from "react";
 
-import { Pagination} from 'react-bootstrap'
+import { Pagination } from "react-bootstrap";
 
-import ReactPaginate from 'react-paginate';
-
-const PaginationComponent = ({ posts , click}) => {
-
-    let active = 2;
+const PaginationComponent = ({ pagesNumber, click, currentPage }) => {
     let items = [];
-    
-    for (let number = posts.pageNumber + 2 ; number <= (posts.posts.length /2); number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active} onClick={click}>
-      {number}
-    </Pagination.Item>,
-  );
-}
-console.log('posts.length:', posts.length)
 
-const paginationBasic = (
-  <div>
- 
+    for (let number = 1; number <= pagesNumber; number++) {
+        items.push(
+            <Pagination.Item
+                key={number}
+                active={number === currentPage}
+                onClick={() => click(number)}
+            >
+                {number}
+            </Pagination.Item>
+        );
+    }
 
-    <Pagination size="lg" style={{margin:'0 auto'}}>{items}</Pagination>
- 
-
-
-  </div>
-);
-
+    const paginationBasic = (
+        <>
+            <Pagination size="lg" className="justify-content-center">
+                {items}
+            </Pagination>
+        </>
+    );
 
     return paginationBasic;
-}
+};
 
 export default PaginationComponent;

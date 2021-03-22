@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
+import "./Spinner.css";
 
-import  './Spinner.css';
-
-
-const Spinner = () => {
+const Spinner = ({ fontSize }) => {
     return (
-        <div className='loader'>Loading...</div>
-    )
-}
+        <div className="loader" style={{ fontSize }}>
+            Loading...
+        </div>
+    );
+};
 
-export default Spinner
+Spinner.defaultProps = {
+    fontSize: 10
+};
+export default Spinner;
