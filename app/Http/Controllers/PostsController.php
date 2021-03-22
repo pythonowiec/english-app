@@ -41,8 +41,20 @@ class PostsController extends Controller
     // }  
     public function index()
     {
-        $test = Posts::where('author', 'test')->get();
-        return $test;
+        try {
+            $data = Posts::where('author', 'test')->get();
+            return response()->json([
+                "data" => $data,
+                "success" => "true",
+                "code" => "200"
+            ]);
+        }catch (Exception $e){
+            return response()->json([
+                "success" => "false",
+                "code" => "404"
+            ]);
+        }
+        
     }
 
     /**
@@ -63,21 +75,30 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|unique:posts',
-            'content' => 'required',
-        ]);
-        $row = Posts::insert([
-                'title' => $request->title,
-                'content' => $request->content,
-                'author' => $request->author
-        ]);
+        try {
+            $validated = $request->validate([
+                'title' => 'required|unique:posts',
+                'content' => 'required',
+            ]);
+            $row = Posts::insert([
+                    'title' => $request->title,
+                    'content' => $request->content,
+                    'author' => $request->author
+            ]);
+            return response()->json([
+                "success" => "true",
+                "code" => "200"
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                "success" => "false",
+                "code" => "404"
+            ]);
+        }
+        
 
         
-        return response()->json([
-            "success" => "true",
-            "code" => "200"
-        ]);
+        
     }
 
     public function show_all($post){
@@ -105,12 +126,19 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $row = Posts::find($id);
-        $data = [
-            'data' => $row,
-            'success' => "true",
-            'code' => "200"          
-        ];
+        if($row = Posts::find($id)){
+            $data = [
+                'data' => $row,
+                'success' => "true",
+                'code' => "200"          
+            ];
+        }else{
+            $data = [
+                'success' => "false",
+                'code' => "404"          
+            ];
+        }
+        
         return response()->json($data);
 
     }

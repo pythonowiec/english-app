@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Example from './components/Example';
+import Posts from './containers/Posts/Posts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
 	<React.StrictMode>
 		
-			<Example />
+			<Posts />
 		
 	</React.StrictMode>,
 	document.getElementById('root')

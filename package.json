@@ -27,6 +27,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "react-bootstrap": "^1.5.1"
+        "react-bootstrap": "^1.5.1",
+        "react-paginate": "^7.1.0"
     }
 }
