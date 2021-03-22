@@ -3,7 +3,7 @@ import { useState , useEffect} from 'react';
 
 const usePosts = () => {
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState({ posts: [] , pageNumber: 0});
 
     const [loading , setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ const usePosts = () => {
       
             console.log('posts:', posts.data.data);
     
-            setPosts(posts.data.data);
+            setPosts(prevState => ({ ...prevState , posts: posts.data.data}));
     
           }
 
@@ -39,14 +39,21 @@ const usePosts = () => {
 
         
 
-        const newPosts  = posts.filter( post => post.id.toString() !== id.toString());
+        const newPosts  = posts.posts.filter( post => post.id.toString() !== id.toString());
 
          await axios.delete(`http://localhost:8000/api/posts/${id}`, {headers:{'X-Authorization': 'hV2yJCCwMz0gWckgfS3c7OeIsBvQL4Sg92qA7R44qI0XkwgnEijSrR2CZStIzS4R'}});
 
-        setPosts(newPosts);
+        setPosts(prevState => ({...prevState , posts:newPosts}));
     };
 
-    return { loading , posts , handlePostDelete};
+    const handlePostPagination = async () => {
+        console.log('I am here')
+
+        setPosts(prevState =>({posts:prevState.posts.map((post, index) => index < (prevState.pageNumber +1 )/ prevState.posts.length ? null : post ), pageNumber:prevState.pageNumber + 1 }))
+
+    }
+
+    return { loading , posts , handlePostDelete , handlePostPagination};
 };
 
 export default usePosts;

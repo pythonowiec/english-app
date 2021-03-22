@@ -43,8 +43,11 @@ class PostsController extends Controller
     {
         try {
             $data = Posts::where('author', 'test')->get();
+            $postsCount = count($data);
+
             return response()->json([
                 "data" => $data,
+                "postsCount" => $postsCount,
                 "success" => "true",
                 "code" => "200"
             ]);
