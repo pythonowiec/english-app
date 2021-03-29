@@ -26,7 +26,7 @@ Route::get('/homepage', function(){
     return view('homepage');
 })->middleware();
 
-Route::get('/posts/{post}', [PostsController::class, 'show_all'])->middleware();
+Route::get('/posts/{post}', [PostsController::class, 'show_all'])->middleware('auth');
 
 Route::post('/store', [PostsController::class, 'store']);
 

@@ -67,7 +67,7 @@ const usePosts = () => {
             await axios.delete(`http://localhost:8000/api/posts/${id}`, {
                 headers: {
                     "X-Authorization":
-                        "hV2yJCCwMz0gWckgfS3c7OeIsBvQL4Sg92qA7R44qI0XkwgnEijSrR2CZStIzS4R"
+                        "mCCpGMLjUKF11hPuwDsLIPgdyVxWVwF7PZ5nq8aM67KZi1yPOGwnsGkoYkoS8GBG"
                 }
             });
         } catch ({ message }) {

@@ -12,6 +12,8 @@ import Pagination from "./../../components/UI/Pagination/Pagination";
 
 import SearchBar from "./../../components/SearchBar/SearchBar";
 
+import { Link} from 'react-router-dom'
+
 const Posts = () => {
     const {
         loading,
@@ -39,7 +41,7 @@ const Posts = () => {
                 />
                 {postsToRender.map(post => (
                     <Card
-                        onClick={() => handlePostDelete(post.id)}
+                      
                         key={post.id}
                         style={{
                             width: "18rem",
@@ -54,10 +56,13 @@ const Posts = () => {
                                 title and make up the bulk of the card's
                                 content.
                             </Card.Text>
+                           <Link to={`/posts/${post.id}`}>
+                           <Button variant='primary'>Show Content</Button>
+                           </Link>
                             {postDeletionLoading === post.id ? (
                                 <Spinner fontSize={5} />
                             ) : (
-                                <Button variant="danger">Delete</Button>
+                                <Button variant="danger"   onClick={() => handlePostDelete(post.id)}>Delete</Button>
                             )}
                         </Card.Body>
                     </Card>

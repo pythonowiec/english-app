@@ -107,6 +107,7 @@ class PostsController extends Controller
     public function show_all($post){
         if ($post == 'all'){
             $test = Posts::where('author', 'test')->get();
+
             return view('all-posts', [
                 'all' => Posts::where('author', 'test')->get()
             ]);
@@ -115,9 +116,7 @@ class PostsController extends Controller
             return view("create");
 
         }else{
-            return view('post', [
-                'post' => Posts::where('title', $post)->firstOrFail()
-            ]);
+            return view('show_id');
         }
     }
 
@@ -164,9 +163,23 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $posts)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+        try {
+            $post = Posts::find($id);
+
+            $post->title = $request->title;
+            
+            $post->save();
+
+            return $data = [
+                'data' => $post,
+                'success' => "true",
+                'code' => "200"          
+            ];
+        } catch (Exception $e) {
+            //throw $th;
+        }
     }
 
     /**
