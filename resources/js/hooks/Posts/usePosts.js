@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+
+
 const usePosts = () => {
     const [posts, setPosts] = useState({
         data: [],
@@ -11,7 +13,7 @@ const usePosts = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const [postsPerPage, setPostsPerPage] = useState(3);
+    const [postsPerPage, setPostsPerPage] = useState(2);
 
     const [postDeletionLoading, setPostDeletionLoading] = useState(-1);
 
@@ -45,11 +47,14 @@ const usePosts = () => {
     }, []);
 
     const lastPostIndex = currentPage * postsPerPage;
+  
     const firstPostIndex = lastPostIndex - postsPerPage;
+   
 
-    const currentPosts = posts.data.slice(firstPostIndex, lastPostIndex);
+    const currentPosts = posts.searched.length > 0 ? posts.searched.slice(firstPostIndex, lastPostIndex) : 
+    posts.data.slice(firstPostIndex, lastPostIndex);
 
-    const pagesNumber = Math.ceil(posts.data.length / postsPerPage);
+    const pagesNumber =  posts.searched.length > 0 ?  Math.ceil( posts.searched.length / postsPerPage): Math.ceil( posts.data.length / postsPerPage);
 
     const handlePostDelete = async id => {
         const newPosts = posts.data.filter(

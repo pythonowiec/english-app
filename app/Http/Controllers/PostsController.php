@@ -86,7 +86,7 @@ class PostsController extends Controller
             $row = Posts::insert([
                     'title' => $request->title,
                     'content' => $request->content,
-                    'author' => $request->author
+                    'author' => "test"
             ]);
             return response()->json([
                 "success" => "true",

@@ -29,8 +29,7 @@ const Posts = () => {
     let render = <Spinner />;
 
     if (!loading && posts.data.length > 0) {
-        const postsToRender =
-            posts.searched.length > 0 ? posts.searched : currentPosts;
+        const postsToRender = currentPosts;
 
         render = (
             <>

@@ -83998,7 +83998,7 @@ var Posts = function Posts() {
   var render = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UI_Spinner_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null);
 
   if (!loading && posts.data.length > 0) {
-    var postsToRender = posts.searched.length > 0 ? posts.searched : currentPosts;
+    var postsToRender = currentPosts;
     render = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SearchBar_SearchBar__WEBPACK_IMPORTED_MODULE_6__["default"], {
       change: handleSearchInputChange,
       searchInputValue: searchInput
@@ -84091,7 +84091,7 @@ var usePosts = function usePosts() {
       currentPage = _useState6[0],
       setCurrentPage = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(3),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(2),
       _useState8 = _slicedToArray(_useState7, 2),
       postsPerPage = _useState8[0],
       setPostsPerPage = _useState8[1];
@@ -84162,8 +84162,8 @@ var usePosts = function usePosts() {
   }, []);
   var lastPostIndex = currentPage * postsPerPage;
   var firstPostIndex = lastPostIndex - postsPerPage;
-  var currentPosts = posts.data.slice(firstPostIndex, lastPostIndex);
-  var pagesNumber = Math.ceil(posts.data.length / postsPerPage);
+  var currentPosts = posts.searched.length > 0 ? posts.searched.slice(firstPostIndex, lastPostIndex) : posts.data.slice(firstPostIndex, lastPostIndex);
+  var pagesNumber = posts.searched.length > 0 ? Math.ceil(posts.searched.length / postsPerPage) : Math.ceil(posts.data.length / postsPerPage);
 
   var handlePostDelete = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
@@ -84313,8 +84313,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\tomynewlaptop\friends projects\english app with classmates\english-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\tomynewlaptop\friends projects\english app with classmates\english-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Jakub\Desktop\english-app\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Jakub\Desktop\english-app\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
