@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-
-
 const usePosts = () => {
     const [posts, setPosts] = useState({
         data: [],
@@ -26,11 +24,9 @@ const usePosts = () => {
             } = await axios.get("http://localhost:8000/api/posts", {
                 headers: {
                     "X-Authorization":
-                        "hV2yJCCwMz0gWckgfS3c7OeIsBvQL4Sg92qA7R44qI0XkwgnEijSrR2CZStIzS4R"
+                        "mCCpGMLjUKF11hPuwDsLIPgdyVxWVwF7PZ5nq8aM67KZi1yPOGwnsGkoYkoS8GBG"
                 }
             });
-
-            console.log(" data :", data);
 
             setPosts(prevState => ({ ...prevState, data, error: false }));
         };
@@ -47,14 +43,18 @@ const usePosts = () => {
     }, []);
 
     const lastPostIndex = currentPage * postsPerPage;
-  
+
     const firstPostIndex = lastPostIndex - postsPerPage;
-   
 
-    const currentPosts = posts.searched.length > 0 ? posts.searched.slice(firstPostIndex, lastPostIndex) : 
-    posts.data.slice(firstPostIndex, lastPostIndex);
+    const currentPosts =
+        posts.searched.length > 0
+            ? posts.searched.slice(firstPostIndex, lastPostIndex)
+            : posts.data.slice(firstPostIndex, lastPostIndex);
 
-    const pagesNumber =  posts.searched.length > 0 ?  Math.ceil( posts.searched.length / postsPerPage): Math.ceil( posts.data.length / postsPerPage);
+    const pagesNumber =
+        posts.searched.length > 0
+            ? Math.ceil(posts.searched.length / postsPerPage)
+            : Math.ceil(posts.data.length / postsPerPage);
 
     const handlePostDelete = async id => {
         const newPosts = posts.data.filter(

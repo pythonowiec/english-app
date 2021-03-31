@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { Button, Alert, Card } from "react-bootstrap";
-
-import axios from "axios";
 
 import Spinner from "./../../components/UI/Spinner/Spinner";
 
@@ -12,7 +10,7 @@ import Pagination from "./../../components/UI/Pagination/Pagination";
 
 import SearchBar from "./../../components/SearchBar/SearchBar";
 
-import { Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Posts = () => {
     const {
@@ -41,7 +39,6 @@ const Posts = () => {
                 />
                 {postsToRender.map(post => (
                     <Card
-                      
                         key={post.id}
                         style={{
                             width: "18rem",
@@ -56,13 +53,18 @@ const Posts = () => {
                                 title and make up the bulk of the card's
                                 content.
                             </Card.Text>
-                           <Link to={`/posts/${post.id}`}>
-                           <Button variant='primary'>Show Content</Button>
-                           </Link>
+                            <Link to={`/posts/${post.id}`}>
+                                <Button variant="primary">Show Content</Button>
+                            </Link>
                             {postDeletionLoading === post.id ? (
                                 <Spinner fontSize={5} />
                             ) : (
-                                <Button variant="danger"   onClick={() => handlePostDelete(post.id)}>Delete</Button>
+                                <Button
+                                    variant="danger"
+                                    onClick={() => handlePostDelete(post.id)}
+                                >
+                                    Delete
+                                </Button>
                             )}
                         </Card.Body>
                     </Card>
@@ -74,6 +76,7 @@ const Posts = () => {
     return (
         <>
             {render}
+
             <Pagination
                 pagesNumber={pagesNumber}
                 currentPage={currentPage}
