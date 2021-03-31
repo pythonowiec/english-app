@@ -22,13 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homepage', function(){
-    return view('homepage');
-})->middleware();
 
-Route::get('/posts/{post}', [PostsController::class, 'index'])->middleware();
 
-Route::post('/store', [PostsController::class, 'store']);
+
+
 
 Route::get('/users', 'HomeController@hello')->middleware();
 
@@ -36,6 +33,4 @@ Auth::routes();
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 
-Route::get('/delete', function () {
-    return view('delete');
-});
+
