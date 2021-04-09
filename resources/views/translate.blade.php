@@ -1,16 +1,41 @@
 @extends('layouts.app')
 @section('content')
 
-<form method="post" action="/translate">
+
+
+@livewireStyles
+
+
     @csrf
-
-    <div class="input-group mb-3">
-        <span class="input-group-text">Word</span>
-        <input type="text" name="text_input" class="form-control" placeholder="" aria-label="Word">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                @livewire('translator')
+            </div>
+            <div class="col-2"></div>
+        </div>
     </div>
-    <button type="submit">ELo</button>
-</form>
 
-{{ $text ?? ""}}
 
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  
+    <script>
+          $.getJSON("data.json", function(json) {
+              //console.log(json['languages'][0]); 
+              var data = json['languages']
+  
+              Array.from(data).forEach(function(item) {
+                  Object.keys(item).forEach(function(key) {
+                      console.log("key:" + key + " value:" + item[key]);
+                  });
+              });
+  
+          });
+      </script>
+
+@livewireScripts
 @endsection

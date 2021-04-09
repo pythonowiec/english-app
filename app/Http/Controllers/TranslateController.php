@@ -50,17 +50,7 @@ class TranslateController extends Controller
     public function show(Request $request)
     {
 
-        $source = 'pl';
-        $target = 'en';
-        $text = $request->text_input;
 
-        $trans = new GoogleTranslate();
-        $result = $trans->translate($source, $target, $text);
-
-
-        return view('translate', [
-            'text' => $result
-        ]);
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Http\Controllers\DictionariesController;
 use App\Http\Controllers\TranslateController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +36,3 @@ Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::get('/dictionaries', [DictionariesController::class, 'index']);
 
 Route::get('/translate', [TranslateController::class, 'index']);
-
-Route::post('/translate', [TranslateController::class, 'show']);
