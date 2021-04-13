@@ -28,9 +28,17 @@ body {
 
 .textarea-translate{
     resize: none;
-    font-size: 2rem !important;
+    font-size: 2rem !important; border-top: 0;
 }
 
 .textarea-translate::placeholder{
     font-size: 2rem;
+}
+
+.lang{
+    padding: 0 !important;
+}
+
+#lang_body{
+
 }
