@@ -36,3 +36,5 @@ Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::get('/dictionaries', [DictionariesController::class, 'index']);
 
 Route::get('/translate', [TranslateController::class, 'index']);
+
+Route::post('/translate', [TranslateController::class, 'index']);

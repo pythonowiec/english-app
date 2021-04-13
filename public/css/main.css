@@ -42,5 +42,10 @@ body {
 
 .lang {
   padding: 0 !important;
+  width: 5rem;
+}
+
+.lang-btn {
+  width: 5rem !important;
 }
 

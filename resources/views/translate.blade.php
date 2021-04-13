@@ -63,31 +63,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   
-    <script>
-          $.getJSON("data.json", function(json) {
-            //console.log(json['languages'][0]);
-            var data = json['languages'];
-            var lang_body = document.getElementById('lang_body');
-
-            Array.from(data).forEach(function(item, i) {
-                Object.keys(item).forEach(function(key){
-                    if(i==0){
-                        lang_body.innerHTML = "<tr>";
-                        console.log(i);
-                    }
-
-                    if((i%3==0) && (i!=0)){
-                        lang_body.innerHTML = lang_body.innerHTML + "</tr>";
-                        lang_body.innerHTML = lang_body.innerHTML + "<tr>";
-                        console.log(i);
-                    }
-
-                    $('#lang_body').append(`<th scope="row"></th><td class="lang">${key}</td>`);
-                    console.log("key:" + key + " value:" + item[key] + " i: " + i);
-                });
-            });
-        });
-      </script>
 
 @livewireScripts
 @endsection
