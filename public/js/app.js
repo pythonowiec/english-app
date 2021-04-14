@@ -38050,8 +38050,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./index */ "./resources/js/index.js");
 
-__webpack_require__(/*! ./translate */ "./resources/js/translate.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -38111,65 +38109,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__);
 
-
-/***/ }),
-
-/***/ "./resources/js/translate.js":
-/*!***********************************!*\
-  !*** ./resources/js/translate.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  $.getJSON("data.json", function (json) {
-    //console.log(json['languages'][0]);
-    var data = json['languages'];
-    var lang_body = "";
-    Array.from(data).forEach(function (item, i) {
-      Object.keys(item).forEach(function (key) {
-        if (i == 0) {
-          lang_body += "<tr>";
-          console.log(i);
-        }
-
-        if (i % 3 == 0 && i != 0) {
-          lang_body += "</tr>";
-          lang_body += "<tr>";
-          console.log(i);
-        }
-
-        lang_body += "<td class=\"lang\"><button class=\"btn btn-light\" id=".concat(i, ">").concat(key, "</button></td>");
-        console.log("key:" + key + " value:" + item[key] + " i: " + i);
-      });
-    });
-    $('#lang_body').html(lang_body);
-    Array.from(data).forEach(function (item, i) {
-      Object.keys(item).forEach(function (key) {
-        var btn = document.getElementById(i);
-        btn.addEventListener("click", function () {
-          var lang = btn.textContent;
-          var code = item[key]; // document.getElementById("hiddeninputsource").value = item[key];
-
-          url = "http://localhost:8000/translate?sl=".concat(code, "&tl=pl");
-          window.open(url, '_self');
-        });
-      });
-    });
-  }); // $(".lang-btn").click(function(){
-  //     console.log("click");
-  // })
-  // var button = document.getElementsByClassName("lang-btn");
-  // // Array.from(button).forEach(btn => {
-  // //     console.log(btn);
-  // // });
-  // Array.from(button).forEach(function(btn) {
-  //    
-  // });
-  // var elements = document.getElementsByClassName("lang-btn")
-  // let arry = Array.from(elements);
-  // console.log(arry)
-});
 
 /***/ }),
 

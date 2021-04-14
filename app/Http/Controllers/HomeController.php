@@ -29,4 +29,14 @@ class HomeController extends Controller
     {
         return view('users')->with("name", "Janusz");
     }
+    
+    public function show() {
+        return view('ajax');
+    }
+    public function store(Request $request) {
+        
+        return response()->json([
+            "status" => $request->name
+        ]);
+    }
 }

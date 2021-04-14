@@ -16,4 +16,3 @@ require('./bootstrap');
 
 require('./index');
 
-require('./translate');

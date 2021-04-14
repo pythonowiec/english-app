@@ -38,3 +38,7 @@ Route::get('/dictionaries', [DictionariesController::class, 'index']);
 Route::get('/translate', [TranslateController::class, 'index']);
 
 Route::post('/translate', [TranslateController::class, 'index']);
+
+Route::get('/ajax-test', [HomeController::class, 'show']);
+
+Route::post('/ajax-test', [HomeController::class, 'store']);

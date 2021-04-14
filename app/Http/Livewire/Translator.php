@@ -24,17 +24,15 @@ class Translator extends Component
     public function __construct(){
 
         $this->trans = new GoogleTranslate();
-        $this->sl = $_GET["sl"];
-        $this->tl = $_GET["tl"];
     }
 
     public function render()
     {
-            if ((!$this->message == "") and (!$this->sl == "") and (!$this->tl == "")){
-                $this->result = $this->trans->translate($this->sl, $this->tl, $this->message);
-            }else{
-                $this->message="";
-            }
+            // if ((!$this->message == "") and (!$this->sl == "") and (!$this->tl == "")){
+            //     $this->result = $this->trans->translate($this->sl, $this->tl, $this->message);
+            // }else{
+            //     $this->message="";
+            // }
 
         return view('livewire.translator');
     }

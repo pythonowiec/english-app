@@ -15,8 +15,7 @@ $( document ).ready(function() {
                     lang_body += "<tr>";
                     console.log(i);
                 }
-    
-                lang_body += `<td class="lang"><button class="btn btn-light" id=${i}>${key}</button></td>`;
+                lang_body += `<td class="lang"><button class="btn btn-light" wire:click="selectLangCode('test')" id=${i}>${key}</button></td>`;
                 console.log("key:" + key + " value:" + item[key] + " i: " + i);
             });
         });
@@ -28,9 +27,12 @@ $( document ).ready(function() {
                 btn.addEventListener("click", () =>{
                     var lang = btn.textContent;
                     var code = item[key];
+
+                    Livewire.emit('selectCode', item[key]);
+
                     // document.getElementById("hiddeninputsource").value = item[key];
-                    url = `http://localhost:8000/translate?sl=${code}&tl=pl`;
-                    window.open(url, '_self');
+                    // url = `http://localhost:8000/translate?sl=${code}&tl=pl`;
+                    // window.open(url, '_self');
 
                     
                 });
