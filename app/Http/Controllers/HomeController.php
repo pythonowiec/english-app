@@ -23,20 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect('/');
     }
-    public function hello()
-    {
-        return view('users')->with("name", "Janusz");
-    }
-    
-    public function show() {
-        return view('ajax');
-    }
-    public function store(Request $request) {
-        
-        return response()->json([
-            "status" => $request->name
-        ]);
-    }
+
 }

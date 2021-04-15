@@ -33,7 +33,7 @@ Auth::routes();
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 
-Route::get('/dictionaries', [DictionariesController::class, 'index']);
+Route::get('/dictionaries', [DictionariesController::class, 'index'])->middleware('auth');
 
 Route::get('/translate', [TranslateController::class, 'index']);
 

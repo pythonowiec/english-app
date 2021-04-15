@@ -18,22 +18,34 @@ class Translator extends Component
     private $trans;
 
     // //lanuguages codes {source} | {target}
-    public $sl;
-    public $tl;
+    public $sl = "en";
+    public $tl = "pl";
+
+    protected $listeners = ['selectCode1' => 'selectLangCode1',
+                            'selectCode2'=> 'selectLangCode2'];
 
     public function __construct(){
 
         $this->trans = new GoogleTranslate();
     }
 
-    public function render()
-    {
-            // if ((!$this->message == "") and (!$this->sl == "") and (!$this->tl == "")){
-            //     $this->result = $this->trans->translate($this->sl, $this->tl, $this->message);
-            // }else{
-            //     $this->message="";
-            // }
+    public function selectLangCode1($code){
+        if(!$code == "")
+            $this->sl = $code;
+    }
 
+    public function selectLangCode2($code){
+        if(!$code == "")
+            $this->tl = $code;
+    }
+
+    public function render()
+    {   
+        if($this->message != "")
+            $this->result = $this->trans->translate($this->sl, $this->tl, $this->message);
+        else{
+            $this->result = " ";
+        }
         return view('livewire.translator');
     }
 }

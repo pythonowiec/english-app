@@ -18,7 +18,12 @@ class DictionariesController extends Controller
     {
         $user = Auth::user()->name;
         $words = Dictionaries::where('user', $user)->orderBy('dictionary')->get();
-        return $words;
+        $query = Dictionaries::select("dictionary")->where('user', $user)->orderBy('dictionary')->get();
+        $titles = $words->groupBy('dictionary');     
+
+        return view("dictionaries.index", [
+            "titles" => $titles
+        ]);
 
         
     }
