@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- Custom css --}}
-    <link href="css/main.css" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 
 
@@ -63,6 +63,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/dictionaries">Your Dictionaries</a>
+                                    <a class="dropdown-item" href="/dictionaries/add">Add New Words</a>
                                     <a class="dropdown-item" href="/translate">Our Translator</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -91,5 +92,6 @@
     </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 </html>

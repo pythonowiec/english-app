@@ -42,4 +42,33 @@ $( document ).ready(function() {
 
     renderLangButtons('lang_body', 'btn_sl', 'selectCode1', 'collapseOneBtn');
     renderLangButtons('lang_body2', 'btn_tl', 'selectCode2', 'collapseTwoBtn');
+
+    $( "#saveBtn" ).click(function() {
+        console.log($('#textarea-translate').val())
+        if($('.textarea-translate').length === 0){
+            Swal.fire({
+                title: 'Add a new word',
+                html: `<input type="text" id="dict" class="swal2-input" placeholder="Dictionary">`,
+                confirmButtonText: 'Save',
+                showDenyButton: true,
+                focusConfirm: false,
+                preConfirm: () => {
+                const dict = Swal.getPopup().querySelector('#dict').value
+                if (!dict) {
+                    Swal.showValidationMessage(`Please enter proper dictionary name`)
+                }
+                return { dict: dict }
+                }
+            }).then((result) => {
+                if(result.isConfirmed){
+                    Swal.fire('Saved!', '', 'success')
+                    Livewire.emit('saveWord', (result.value.dict).toString())
+                } else if (result.isDenied) {
+                    Swal.fire('Word is not saved', '', 'error')
+                }
+                
+            })
+        }
+    });    
+
 });

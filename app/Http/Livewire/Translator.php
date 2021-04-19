@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use \Statickidz\GoogleTranslate;
 
+use App\Dictionaries;
+use Auth;
 
 
 class Translator extends Component
@@ -22,7 +24,8 @@ class Translator extends Component
     public $tl = "pl";
 
     protected $listeners = ['selectCode1' => 'selectLangCode1',
-                            'selectCode2'=> 'selectLangCode2'];
+                            'selectCode2'=> 'selectLangCode2',
+                            'saveWord' => 'saveWord'];
 
     public function __construct(){
 
@@ -37,6 +40,31 @@ class Translator extends Component
     public function selectLangCode2($code){
         if(!$code == "")
             $this->tl = $code;
+    }
+
+    public function saveWord($dict){
+        
+        if($this->sl=="en" or $this->sl=="pl"){
+            if($this->tl=="en" or $this->tl=="pl"){
+                if($this->message != ""){
+                    if($this->sl=="pl"){
+                        Dictionaries::insert([
+                            'polish'=> $this->message,
+                            'english'=> $this->result,
+                            'user'=> Auth::user()->name,
+                            'dictionary'=> $dict
+                        ]);
+                    }else if($this->sl=="en"){
+                        Dictionaries::insert([
+                            'polish'=> $this->result,
+                            'english'=> $this->message,
+                            'user'=> Auth::user()->name,
+                            'dictionary'=> $dict
+                        ]);
+                    }
+                }
+            }
+        }
     }
 
     public function render()

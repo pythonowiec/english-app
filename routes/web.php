@@ -33,12 +33,11 @@ Auth::routes();
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 
-Route::get('/dictionaries', [DictionariesController::class, 'index'])->middleware('auth');
+Route::get('/dictionaries', [DictionariesController::class, 'index']);
+Route::get('/dictionaries/add', [DictionariesController::class, 'create']);
+Route::post('/dictionaries/add', [DictionariesController::class, 'store']);
 
 Route::get('/translate', [TranslateController::class, 'index']);
 
 Route::post('/translate', [TranslateController::class, 'index']);
 
-Route::get('/ajax-test', [HomeController::class, 'show']);
-
-Route::post('/ajax-test', [HomeController::class, 'store']);

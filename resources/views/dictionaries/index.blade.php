@@ -49,4 +49,22 @@
         </div>
     </div>
 
+    <script>
+        const { value: dictionary } = await Swal.fire({
+            title: 'Enter your new dictionary name',
+            input: 'text',
+            inputLabel: 'Name Dictionary',
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                return 'You need to write something!'
+                }
+            }
+        });
+        if(dictionary){
+            swal("Created!", "Your dictionary has been created.", "success");
+            post('/link/link', {test: '1'});
+        }
+    </script>
+
 @endsection

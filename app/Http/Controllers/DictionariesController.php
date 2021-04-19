@@ -14,18 +14,17 @@ class DictionariesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function index()
     {
         $user = Auth::user()->name;
         $words = Dictionaries::where('user', $user)->orderBy('dictionary')->get();
-        $query = Dictionaries::select("dictionary")->where('user', $user)->orderBy('dictionary')->get();
-        $titles = $words->groupBy('dictionary');     
+        $titles = $words->groupBy('dictionary');
 
         return view("dictionaries.index", [
             "titles" => $titles
         ]);
 
-        
     }
 
     /**
@@ -35,7 +34,13 @@ class DictionariesController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user()->name;
+        $words = Dictionaries::where('user', $user)->orderBy('dictionary')->get();
+        $titles = $words->groupBy('dictionary');
+
+        return view('dictionaries/add', [
+            "titles" => $titles
+        ]);
     }
 
     /**
@@ -46,9 +51,19 @@ class DictionariesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $user = Auth::user()->name;
 
+        $newWords = new Dictionaries();
+        $newWords->polish = $request->polish;
+        $newWords->english = $request->english;
+        $newWords->dictionary = str_replace($request->dictionary);
+        $newWords->user = $user;
+
+        $newWords->save();
+        
+        return redirect('dictionaries\add');
+    }
+    
     /**
      * Display the specified resource.
      *
