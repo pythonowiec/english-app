@@ -5,7 +5,6 @@
 
 @livewireStyles
 
-
     @csrf
     @livewire('translator')
 

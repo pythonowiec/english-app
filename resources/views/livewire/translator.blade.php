@@ -50,9 +50,14 @@
                     <textarea type="text" id="textarea-translate" name="text_input_translated" class="form-control textarea-translate" style="border-radius: 0 0 .25rem 0 !important;" placeholder="Translate" disabled>{{$result}}</textarea>
                 </div>
             </div>
-            <div class="col-2"></div>
-            
+            <div class="col-2"></div>  
         </div>
-    </div>
-    <button class="btn btn-success" id="saveBtn" wire:ignore>Save</button>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <button class="btn btn-info btn-lg float-right" id="saveBtn" wire:ignore>Save to dictionary</button>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>   
 </div>

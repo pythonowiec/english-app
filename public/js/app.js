@@ -38050,6 +38050,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./index */ "./resources/js/index.js");
 
+__webpack_require__(/*! ./dictionary */ "./resources/js/dictionary.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -38094,6 +38096,54 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/dictionary.js":
+/*!************************************!*\
+  !*** ./resources/js/dictionary.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  function delete_words(url, data) {
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          method: "POST",
+          url: url,
+          data: {
+            id: data
+          }
+        }).done(function (response) {
+          window.location.reload();
+        }).fail(function (response) {
+          alert(response);
+        });
+      }
+    });
+  }
+
+  $('.delete-btn').click(function () {
+    delete_words("/dictionaries/delete", $(this).data("id"));
+  });
+  $('.delete-all').click(function () {
+    delete_words("/dictionaries/delete", "all");
+  });
+});
 
 /***/ }),
 

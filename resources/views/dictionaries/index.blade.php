@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
+        @csrf
         <div class="row">
             <div class="col-1"></div>
-            <div class="col-10">
+            <div class="col-10 mb-5">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     @foreach ($titles as $title)
                         <li class="nav-item">
                             @if($loop->first)
-                            <a class="nav-link active" id="{{$title[0]['dictionary']}}-tab" data-toggle="tab" href="#{{$title[0]['dictionary']}}" role="tab" aria-controls="{{$title[0]['dictionary']}}" aria-selected="true">{{$title[0]['dictionary']}}</a>
+                                <a class="nav-link active" id="{{$title[0]['dictionary']}}-tab" data-toggle="tab" href="#{{$title[0]['dictionary']}}" role="tab" aria-controls="{{$title[0]['dictionary']}}" aria-selected="true">{{$title[0]['dictionary']}}</a>
                             @else
-                            <a class="nav-link" id="{{$title[0]['dictionary']}}-tab" data-toggle="tab" href="#{{$title[0]['dictionary']}}" role="tab" aria-controls="{{$title[0]['dictionary']}}" aria-selected="true">{{$title[0]['dictionary']}}</a>
+                                <a class="nav-link" id="{{$title[0]['dictionary']}}-tab" data-toggle="tab" href="#{{$title[0]['dictionary']}}" role="tab" aria-controls="{{$title[0]['dictionary']}}" aria-selected="true">{{$title[0]['dictionary']}}</a>
                             @endif
                         </li>
                     @endforeach
@@ -36,7 +38,7 @@
                                         <tr>
                                             <td>{{ $word->polish }}</td>
                                             <td>{{ $word->english }}</td>
-                                            <td><button class="btn btn-danger">Delete</button></td> 
+                                            <td><button data-id="{{ $word->id }}" class="btn btn-danger delete-btn"><img src="/images/delete.png" alt="" srcset=""></button></td> 
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -48,23 +50,5 @@
             <div class="col-1"></div>
         </div>
     </div>
-
-    <script>
-        const { value: dictionary } = await Swal.fire({
-            title: 'Enter your new dictionary name',
-            input: 'text',
-            inputLabel: 'Name Dictionary',
-            showCancelButton: true,
-            inputValidator: (value) => {
-                if (!value) {
-                return 'You need to write something!'
-                }
-            }
-        });
-        if(dictionary){
-            swal("Created!", "Your dictionary has been created.", "success");
-            post('/link/link', {test: '1'});
-        }
-    </script>
 
 @endsection

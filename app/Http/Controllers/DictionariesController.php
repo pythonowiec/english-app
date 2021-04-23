@@ -104,8 +104,27 @@ class DictionariesController extends Controller
      * @param  \App\Dictionaries  $dictionaries
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dictionaries $dictionaries)
+    public function destroy(Request $request)
     {
-        //
+        if($request->id == "all"){
+            $user = Auth::user()->name;
+            $words = Dictionaries::whereIn('user', $user)->orderBy('dictionary')->get();
+            // $titles = $words->groupBy('dictionary');
+
+            foreach ($words as $word) {
+                $word->destroy();
+            }
+
+
+        }else{
+            $words = Dictionaries::find($request->id);
+
+            $words->delete();
+        }
+       
+
+        return response()->json([
+            "status" => "success"
+        ]);
     }
 }

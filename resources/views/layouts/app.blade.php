@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -31,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #262650;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    English-App
+                    English App
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,9 +63,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/dictionaries">Your Dictionaries</a>
+                                    <a class="dropdown-item" href="/dictionaries">Dictionaries</a>
                                     <a class="dropdown-item" href="/dictionaries/add">Add New Words</a>
-                                    <a class="dropdown-item" href="/translate">Our Translator</a>
+                                    <a class="dropdown-item" href="/translate">Translator</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                       document.getElementById('logout-form').submit();">

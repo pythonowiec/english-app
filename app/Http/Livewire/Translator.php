@@ -43,7 +43,6 @@ class Translator extends Component
     }
 
     public function saveWord($dict){
-        
         if($this->sl=="en" or $this->sl=="pl"){
             if($this->tl=="en" or $this->tl=="pl"){
                 if($this->message != ""){
@@ -69,7 +68,8 @@ class Translator extends Component
 
     public function render()
     {   
-        if($this->message != "")
+
+        if($this->message != "" && !ctype_space($this->message))
             $this->result = $this->trans->translate($this->sl, $this->tl, $this->message);
         else{
             $this->result = " ";

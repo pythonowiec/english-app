@@ -1,5 +1,9 @@
 $( document ).ready(function() {
 
+    //Default languages
+    $('#collapseOneBtn').html('english');
+    $('#collapseTwoBtn').html('polish');
+
     function renderLangButtons(langBody, buttonType, liverwireEvent, collapseButton){
         $.getJSON("data.json", function(json) {
             var data = json['languages'];
@@ -44,20 +48,26 @@ $( document ).ready(function() {
     renderLangButtons('lang_body2', 'btn_tl', 'selectCode2', 'collapseTwoBtn');
 
     $( "#saveBtn" ).click(function() {
-        console.log($('#textarea-translate').val())
-        if($('.textarea-translate').length === 0){
-            Swal.fire({
-                title: 'Add a new word',
-                html: `<input type="text" id="dict" class="swal2-input" placeholder="Dictionary">`,
-                confirmButtonText: 'Save',
-                showDenyButton: true,
-                focusConfirm: false,
-                preConfirm: () => {
-                const dict = Swal.getPopup().querySelector('#dict').value
-                if (!dict) {
-                    Swal.showValidationMessage(`Please enter proper dictionary name`)
+            if($("#textarea-translate").val().trim().length === 0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please enter anything!'
+                  });
+            }else{
+                Swal.fire({
+                    title: 'Add a new word',
+                    html: `<input type="text" id="dict" class="swal2-input" placeholder="Dictionary">`,
+                    confirmButtonText: 'Save',
+                    showDenyButton: true,
+                    denyButtonText: "Don't save",
+                    focusConfirm: false,
+                    preConfirm: () => {
+                    const dict = Swal.getPopup().querySelector('#dict').value
+                    if (!dict) {
+                        Swal.showValidationMessage(`Please enter proper dictionary name`)
                 }
-                return { dict: dict }
+                    return { dict: dict }
                 }
             }).then((result) => {
                 if(result.isConfirmed){
