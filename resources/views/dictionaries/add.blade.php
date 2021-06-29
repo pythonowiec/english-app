@@ -17,7 +17,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="dictionaries">Dictionaries</label>
                             </div>
-                            <input type="text" class="form-control" name="dictionary" autocomplete="off" list="dictionaries" placeholder="Enter your dictionaries" />
+                            <input type="text" class="form-control" name="dictionary" autocomplete="off" list="dictionaries" placeholder="Enter your dictionary" />
                             <datalist id="dictionaries">
 
                                 @foreach ($titles as $title)

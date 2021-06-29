@@ -14,4 +14,5 @@ const mix = require('laravel-mix');
 mix.react('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/main.scss', 'public/css')
+    .js('resources/js/game.js', 'public/js')
 mix.browserSync("localhost:8000");

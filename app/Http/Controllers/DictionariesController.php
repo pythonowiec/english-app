@@ -27,6 +27,16 @@ class DictionariesController extends Controller
 
     }
 
+    public function play(Request $request)
+    {
+        $user = Auth::user()->name;
+        $words = Dictionaries::where('user', $user)->where('dictionary', $request->dictionary)->get();
+
+        return response()->json([
+            'words' => $words
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -56,7 +66,7 @@ class DictionariesController extends Controller
         $newWords = new Dictionaries();
         $newWords->polish = $request->polish;
         $newWords->english = $request->english;
-        $newWords->dictionary = str_replace($request->dictionary);
+        $newWords->dictionary = $request->dictionary;
         $newWords->user = $user;
 
         $newWords->save();

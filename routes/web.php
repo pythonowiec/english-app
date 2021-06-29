@@ -38,6 +38,8 @@ Route::get('/dictionaries/add', [DictionariesController::class, 'create']);
 Route::post('/dictionaries/add', [DictionariesController::class, 'store']);
 Route::post('/dictionaries/delete', [DictionariesController::class, 'destroy']);
 
+Route::post('/play', [DictionariesController::class, 'play']);
+
 Route::get('/translate', [TranslateController::class, 'index']);
 
 Route::post('/translate', [TranslateController::class, 'index']);

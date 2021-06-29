@@ -6,7 +6,7 @@
         @csrf
         <div class="row">
             <div class="col-1"></div>
-            <div class="col-10 mb-5">
+            <div class="col-9 mb-5">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     @foreach ($titles as $title)
                         <li class="nav-item">
@@ -47,8 +47,13 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-1"></div>
+            <div class="col-2">
+                <a href="{{ url('/dictionaries/add') }}"><button id="add" class="btn btn-primary"><img  height="30" width="30" src="{{ asset('images/plus.png') }}"></button></a>
+                <button class="btn btn-success" id="play">Play</button>
+            </div>
         </div>
     </div>
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{asset('js/game.js')}}"></script>
 @endsection
