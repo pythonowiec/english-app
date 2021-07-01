@@ -56,7 +56,7 @@ $( document ).ready(function() {
                   });
             }else{
                 Swal.fire({
-                    title: 'Add a new word',
+                    title: 'Add a new word (works only for polish-english / english-polish) ',
                     html: `<input type="text" id="dict" class="swal2-input" placeholder="Dictionary">`,
                     confirmButtonText: 'Save',
                     showDenyButton: true,
