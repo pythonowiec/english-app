@@ -6,6 +6,8 @@ use App\Dictionaries;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class DictionariesController extends Controller
 {
@@ -63,6 +65,17 @@ class DictionariesController extends Controller
     {
         $user = Auth::user()->name;
 
+        $request->validate([
+            'polish' => [
+                'required',
+            ],
+            'english' => 'required',
+            'dictionary' => 'required',
+
+        ]);
+        
+        
+
         $newWords = new Dictionaries();
         $newWords->polish = $request->polish;
         $newWords->english = $request->english;
@@ -71,7 +84,7 @@ class DictionariesController extends Controller
 
         $newWords->save();
         
-        return redirect('dictionaries\add');
+        return redirect('dictionaries\add')->with('status', 'create');
     }
     
     /**

@@ -28,15 +28,37 @@
                           </div>
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-md mt-4 float-right">Add</button>
                     </div>
                 </div>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 
                 
             </form>
         </div>
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your word has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
 @endsection

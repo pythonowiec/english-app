@@ -11010,23 +11010,8 @@ $(function () {
       $('#add').remove();
       var index = Math.floor(Math.random() * response['words'].length);
       var polish = response['words'][index]["polish"];
-      var english = response['words'][index]["english"]; // Swal.fire({
-      //     title: `Enter a translation from Polish ${ polish }`,
-      //     input: 'text',
-      //     inputLabel: 'English:',
-      //     inputValidator: (value) => {
-      //         if (!value) {
-      //             return 'You need to write something!'
-      //         }
-      //         if(value.toUpperCase() == english.toUpperCase()){
-      //             Swal.fire({
-      //                 icon: 'success',
-      //                 title: 'Correct !!!'
-      //             })
-      //         }
-      // })
-
-      $('#myTabContent').append("\n            <div class=\"alert alert-dark alert-dismissible fade show\" role=\"alert\">\n                Enter a translation from Polish <strong id=\"polish\">".concat(polish, "</strong>\n                <div class=\"input-group input-group-sm mt-3\">\n                    <div class=\"input-group-prepend\">\n                        <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">English</span>\n                    </div>\n                    <input type=\"text\" id=\"english\" class=\"form-control\" aria-label=\"Small\" aria-describedby=\"inputGroup-sizing-sm\">\n                </div>\n                <br><button type=\"submit\" id=\"check\" class=\"btn btn-primary mt-4\">Check</button>\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&times;</span>\n                </button>\n            </div>\n            "));
+      var english = response['words'][index]["english"];
+      $('#myTabContent').append("\n            <div class=\"alert alert-dark alert-dismissible fade show\" id=\"myAlert\" role=\"alert\">\n                Enter a translation from Polish <strong id=\"polish\">".concat(polish, "</strong>\n                <div class=\"input-group input-group-sm mt-3\">\n                    <div class=\"input-group-prepend\">\n                        <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">English</span>\n                    </div>\n                    <input type=\"text\" id=\"english\" class=\"form-control\" aria-label=\"Small\" aria-describedby=\"inputGroup-sizing-sm\">\n                </div>\n                <br><button type=\"submit\" id=\"check\" class=\"btn btn-primary mt-4\">Check</button>\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&times;</span>\n                </button>\n            </div>\n            "));
       var audio = new Audio('sounds/success.wav');
       var audio1 = new Audio('sounds/wrong.wav');
       var points = response['words'].length;
@@ -11083,6 +11068,9 @@ $(function () {
           $('#english').val("");
           $('#polish').text(polish);
         }
+      });
+      $('#myAlert').on('closed.bs.alert', function () {
+        window.location.reload(true);
       });
     }).fail(function (response) {
       alert("ERROR");

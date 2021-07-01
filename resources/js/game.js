@@ -23,28 +23,8 @@ $(function() {
             let polish =  response['words'][index]["polish"];
             let english =  response['words'][index]["english"];
 
-
-            // Swal.fire({
-            //     title: `Enter a translation from Polish ${ polish }`,
-            //     input: 'text',
-            //     inputLabel: 'English:',
-            //     inputValidator: (value) => {
-            //         if (!value) {
-            //             return 'You need to write something!'
-            //         }
-            //         if(value.toUpperCase() == english.toUpperCase()){
-            //             Swal.fire({
-            //                 icon: 'success',
-            //                 title: 'Correct !!!'
-            //             })
-            //         }
-            
-
-
-
-            // })
             $('#myTabContent').append(`
-            <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <div class="alert alert-dark alert-dismissible fade show" id="myAlert" role="alert">
                 Enter a translation from Polish <strong id="polish">${ polish }</strong>
                 <div class="input-group input-group-sm mt-3">
                     <div class="input-group-prepend">
@@ -119,6 +99,9 @@ $(function() {
                     }
                     
             });
+            $('#myAlert').on('closed.bs.alert', function () {
+                window.location.reload(true);
+              })
         })
         .fail(function (response) {
             alert("ERROR");
