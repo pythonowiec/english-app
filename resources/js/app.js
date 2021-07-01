@@ -16,3 +16,4 @@ require('./bootstrap');
 
 require('./index');
 
+require('./dictionary');

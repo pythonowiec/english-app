@@ -6,6 +6,11 @@ use App\Http\Controllers\PostsController;
 
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\DictionariesController;
+
+use App\Http\Controllers\TranslateController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,20 +27,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homepage', function(){
-    return view('homepage');
-})->middleware();
-
-Route::get('/posts/{post}', [PostsController::class, 'index'])->middleware();
-
-Route::post('/store', [PostsController::class, 'store']);
-
 Route::get('/users', 'HomeController@hello')->middleware();
 
 Auth::routes();
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 
-Route::get('/delete', function () {
-    return view('delete');
-});
+Route::get('/dictionaries', [DictionariesController::class, 'index']);
+Route::get('/dictionaries/add', [DictionariesController::class, 'create']);
+Route::post('/dictionaries/add', [DictionariesController::class, 'store']);
+Route::post('/dictionaries/delete', [DictionariesController::class, 'destroy']);
+
+Route::post('/play', [DictionariesController::class, 'play']);
+
+Route::get('/translate', [TranslateController::class, 'index']);
+
+Route::post('/translate', [TranslateController::class, 'index']);
+

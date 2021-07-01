@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f9da49141eb2c016f9d02319b48a575",
+    "content-hash": "aebaeef33617bfd353182f6e9114f6b1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1440,16 +1440,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.4.0",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "8055af7730938cd607616fde122825ed960a9b71"
+                "reference": "2495387841a3eb03ac62b2c984ccd2574303285b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/8055af7730938cd607616fde122825ed960a9b71",
-                "reference": "8055af7730938cd607616fde122825ed960a9b71",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/2495387841a3eb03ac62b2c984ccd2574303285b",
+                "reference": "2495387841a3eb03ac62b2c984ccd2574303285b",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1500,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.4.0"
+                "source": "https://github.com/livewire/livewire/tree/v2.4.2"
             },
             "funding": [
                 {
@@ -1508,7 +1508,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-23T17:44:50+00:00"
+            "time": "2021-04-04T15:46:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2481,6 +2481,69 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "statickidz/php-google-translate-free",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/statickidz/php-google-translate-free.git",
+                "reference": "f13f952af0718b4590bdaa2209133f10d0534dea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/statickidz/php-google-translate-free/zipball/f13f952af0718b4590bdaa2209133f10d0534dea",
+                "reference": "f13f952af0718b4590bdaa2209133f10d0534dea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": ">=4.8",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Statickidz\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Paris Niarfe Baltazar Salguero",
+                    "email": "sieg.sb@gmail.com",
+                    "homepage": "http://www.pbaltazar.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Adrián Barrio Andrés",
+                    "email": "statickidz@gmail.com",
+                    "homepage": "https://statickidz.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Google Translate Free library for PHP",
+            "homepage": "https://github.com/statickidz/php-google-translate-free/",
+            "keywords": [
+                "api",
+                "free",
+                "google",
+                "siegsb",
+                "statickidz",
+                "translate",
+                "translator"
+            ],
+            "support": {
+                "issues": "https://github.com/statickidz/php-google-translate-free/issues",
+                "source": "https://github.com/statickidz/php-google-translate-free/releases"
+            },
+            "time": "2019-06-13T16:07:11+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
