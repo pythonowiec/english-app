@@ -11054,17 +11054,18 @@ $(function () {
           $('#polish').text(polish);
         } else {
           console.log(response['words']);
-          index = Math.floor(Math.random() * response['words'].length);
-          polish = response['words'][index]["polish"];
-          english = response['words'][index]["english"];
           mistakes++;
           audio1.play();
           Swal.fire({
             icon: 'error',
             title: 'Incorrect !!!',
+            text: "Correct is ".concat(english),
             showConfirmButton: false,
-            timer: 600
+            timer: 1500
           });
+          index = Math.floor(Math.random() * response['words'].length);
+          polish = response['words'][index]["polish"];
+          english = response['words'][index]["english"];
           $('#english').val("");
           $('#polish').text(polish);
         }
