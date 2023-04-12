@@ -1,3 +1,3 @@
 # english-app 
 
-elo to jest merge z brancha matiu
+This is app for learning english
